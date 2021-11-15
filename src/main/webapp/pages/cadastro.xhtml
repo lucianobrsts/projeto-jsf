@@ -20,33 +20,41 @@
 			.btnAdicionar {
 				margin-left: 147px;
 			}
+			
+			#separator{
+				margin-bottom: 20px;
+				margin-top: 20px;
+			}
 		</style>
 	</h:head>
 	
 	<h:body>
 		<h1>Cadastro de Pessoas</h1>
 		
-		<h:form>
+		<h:form id="formCadastro">
 			<h:panelGrid columns="2">
-				<h:outputText value="Nome" />
-				<h:inputText value="#{bean.pessoa.nome}" required="true"/>
+				<p:outputLabel value="Nome" />
+				<p:inputText value="#{bean.pessoa.nome}" required="true"/>
 
-				<h:outputText value="Email" />
-				<h:inputText value="#{bean.pessoa.email}" required="true" />
+				<p:outputLabel value="Email" />
+				<p:inputText value="#{bean.pessoa.email}" required="true" />
 			</h:panelGrid>
 
 			<div class="pnlButtonAdicionar">
-				<h:commandButton value="Adicionar" action="#{bean.adicionar}" class="btnAdicionar"/>
+				<p:commandButton value="Adicionar" action="#{bean.adicionar}" class="btnAdicionar" update=":formCadastro :tblPessoa"/>
 			</div>
 		</h:form>
 
-		<p:separator />/p:separator>
+		<p:separator id="separator"/>
 		
 		<h2>Lista de Pessoas</h2>
 		
-		<h:dataTable value="#{bean.pessoas}" var="p" border="1">
-			<h:column>#{p.nome}</h:column>
-			<h:column>#{p.email}</h:column>
-		</h:dataTable>
+		<p:dataTable value="#{bean.pessoas}" var="p" border="1" id="tblPessoa">
+			<p:column headerText="Nome">#{p.nome}</p:column>
+			<p:column headerText="Email">#{p.email}</p:column>
+			<p:column headerText="Editar">
+				<p:button value="Editar" outcome="/pages/sucesso.xhtml?param=#{p.nome}" />
+			</p:column>
+		</p:dataTable>
 	</h:body>
 </html>
