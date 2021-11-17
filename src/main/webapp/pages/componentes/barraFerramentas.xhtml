@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		
+		<h:outputStylesheet name="style.css" library="css" />
+		
+		<title>Text Área</title>
+		
+	</h:head>
+	
+	<h:body>
+		<p:graphicImage library="images" name="logo.png" width="100px" />
+		
+		<p:growl id="msg" showDetail="true" />
+	
+		<p:panel header="Tool Bar">
+			<h:form>
+				<p:toolbar>
+					<f:facet name="left">
+						<p:button value="Novo" icon="pi pi-file-o" />
+						<h:outputLabel value="...."/>
+						<p:button value="Abrir" icon="fa fa-folder-open-o" />
+						
+						<span class="ui-separator">
+							<span class="ui-icon ui-icon-grip-dotted-vertical" />
+						</span>
+						
+						<h:outputLabel value="...."/>
+						<p:button icon="fa fa-floppy-o" />
+						<h:outputLabel value="...."/>
+						<p:button icon="fa fa-trash" />
+						<h:outputLabel value="...."/>
+						<p:button icon="fa fa-print" />
+					</f:facet>
+					
+					<f:facet name="right">
+						<p:menuButton value="Opções">
+							<p:menuitem value="Salvar" icon="fa fa-floppy-o"/>
+							<p:menuitem value="Alterar" icon="fa fa-pencil-square-o"/>
+							<p:menuitem value="Deletar" icon="fa fa-trash"/>
+						</p:menuButton>
+					</f:facet>
+				</p:toolbar>
+			</h:form>
+		</p:panel>
+		
+	</h:body>
+</html>
