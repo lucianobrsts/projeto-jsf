@@ -1,7 +1,5 @@
 package br.com.dominio.model;
 
-import java.io.Serializable;
-
 public enum TipoAtividade {
 
 	APRESENTACAO("Apresentacao"), CURSO("Curso"), MINICURSO("Minicurso"), PALESTRA("Palestra"), SAMINARIO("Seminário"),
