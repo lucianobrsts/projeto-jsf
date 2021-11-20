@@ -10,13 +10,13 @@
 
 	<h:outputStylesheet name="style.css" library="css" />
 
-	<title>Messages</title>
+	<title>Growl</title>
 
 </h:head>
 
 <h:body>
 	<p:graphicImage library="images" name="logo.png" width="100px" />
-	<p:messages showIcon="true" id="messages" closable="true"/>
+	<p:growl showIcon="true" id="messages" life="3000"/>
 
 	<h:form id="form">
 		<p:panelGrid columns="2">
