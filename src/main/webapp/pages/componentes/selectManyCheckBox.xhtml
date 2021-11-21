@@ -1,42 +1,28 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="/WEB-INF/template/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<ui:define name="content">
+		<p:fieldset legend="Componente Select Many Check Box">
 
-	<h:outputStylesheet name="style.css" library="css" />
+			<h:form id="form">
+				<p:panelGrid columns="2">
 
-	<title>Select Many Check Box</title>
+					<p:selectManyCheckbox value="#{ligaBBVA.timesEspanhois}"
+						layout="pageDirection">
+						<f:selectItem itemLabel="AtlÃ©tico de Madrid" itemValue="atletico" />
+						<f:selectItem itemLabel="Barcelona" itemValue="barcelona" />
+						<f:selectItem itemLabel="Real Madrid" itemValue="real" />
+					</p:selectManyCheckbox>
 
-</h:head>
+					<p:commandButton value="Times" action="#{ligaBBVA.selecionar}" />
 
-<h:body>
-	<p:graphicImage library="images" name="logo.png" width="100px" />
+				</p:panelGrid>
+			</h:form>
 
-	<h:form id="form">
-		<p:panelGrid columns="2">
-
-			<p:selectOneRadio value="#{clienteMB.tipoPessoa}">
-				<f:selectItem itemLabel="Física" itemValue="FISICA" />
-				<f:selectItem itemLabel="Jurídica" itemValue="JURIDICA" />
-
-				<p:ajax event="click" update="input" process="@this" />
-			</p:selectOneRadio>
-
-			<h:panelGroup id="input">
-				<p:inputMask mask="999.999.999-99" value="CPF" id="cpf"
-					rendered="#{clienteMB.tipoPessoa eq 'FISICA'}" required="true" />
-
-				<p:inputMask mask="99.999.999/9999-99" value="CNPJ" id="cnpj"
-					rendered="#{clienteMB.tipoPessoa eq 'JURIDICA'}" required="true" />
-			</h:panelGroup>
-
-		</p:panelGrid>
-	</h:form>
-
-</h:body>
-</html>
+		</p:fieldset>
+	</ui:define>
+	</ui:composition>

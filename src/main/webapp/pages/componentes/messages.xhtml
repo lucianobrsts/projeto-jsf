@@ -1,29 +1,23 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="/WEB-INF/template/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<ui:define name="content">
+	<p:messages id="messages" closable="true"/>
+		<p:fieldset legend="Componente Messages">
 
-	<h:outputStylesheet name="style.css" library="css" />
+			<h:form id="form">
+				<p:panelGrid columns="2">
+					<p:commandButton value="Mensagem sucesso" action="#{msg.salvar}"
+						update="messages" icon="" />
+					<p:commandButton value="Mensagem erro" action="#{msg.erro}"
+						update="messages" />
+				</p:panelGrid>
+			</h:form>
 
-	<title>Messages</title>
-
-</h:head>
-
-<h:body>
-	<p:graphicImage library="images" name="logo.png" width="100px" />
-	<p:messages showIcon="true" id="messages" closable="true"/>
-
-	<h:form id="form">
-		<p:panelGrid columns="2">
-			<p:commandButton value="Mensagem sucesso" action="#{msg.salvar}" update="messages" icon=""/>			
-			<p:commandButton value="Mensagem erro" action="#{msg.erro}" update="messages"/>			
-		</p:panelGrid>
-	</h:form>
-
-</h:body>
-</html>
+		</p:fieldset>
+	</ui:define>
+</ui:composition>

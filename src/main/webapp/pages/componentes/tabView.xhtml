@@ -1,40 +1,35 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="/WEB-INF/template/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<ui:define name="content">
+		<p:fieldset legend="Componente Tab View">
 
-	<h:outputStylesheet name="style.css" library="css" />
+			<h:form id="form">
 
-	<title>Tab View</title>
+				<p:tabView>
+					<p:tab title="FormulÃ¡rio">
+						<p:panelGrid columns="2">
+							<p:outputLabel value="Nome" />
+							<p:inputText size="45" />
+							
+							<p:outputLabel value="E-mail" />
+							<p:inputText size="45" />
+							
+							<p:outputLabel value="CPF" />
+							<p:inputMask mask="999.999.999-99" size="10" />
+						</p:panelGrid>
+					</p:tab>
 
-</h:head>
+					<p:tab title="Logo">
+						<p:graphicImage library="images" name="logo.png" width="100px" />
+					</p:tab>
+				</p:tabView>
+			</h:form>
 
-<h:body>
-
-	<h:form id="form">
-
-		<p:tabView>
-			<p:tab title="Formulário">
-				<p:panelGrid columns="2">
-					<p:outputLabel value="Nome" />
-					<p:inputText size="45" />
-					<p:outputLabel value="E-mail" />
-					<p:inputText size="45" />
-					<p:outputLabel value="CPF" />
-					<p:inputMask mask="999.999.999-99" size="10" />
-				</p:panelGrid>
-			</p:tab>
-
-			<p:tab title="Logo">
-				<p:graphicImage library="images" name="logo.png" width="100px" />
-			</p:tab>
-		</p:tabView>
-	</h:form>
-
-</h:body>
-</html>
+		</p:fieldset>
+	</ui:define>
+</ui:composition>
