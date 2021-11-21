@@ -12,6 +12,12 @@
 
 	<title>Confirm Daialog</title>
 
+	<style type="text/css">
+		commandButton {
+			margin: 10px;
+		}
+	</style>
+
 </h:head>
 
 <h:body>
@@ -19,16 +25,16 @@
 <p:growl id="msg" life="3000" />
 
 	<h:form id="form">
-		<p:commandButton value="Salvar" action="#{msg.salvar}" update="msg">
-			<p:confirm header="Cabeçalho" message="Tem certeza que deseja salvar?" />
+		<p:commandButton value="Salvar" action="#{msg.salvar}" update="msg" style="margin: 10px">
+			<p:confirm header="Confirmação" message="Tem certeza que deseja salvar?" />
 		</p:commandButton>
 		
-		<p:commandButton value="Salvar" action="#{msg.salvar}" update="msg" styleClass="p-mr-2" icon="pi pi-check">
-			<p:confirm type="popup" header="Confirmation" message="Tem certeza que deseja salvar?" />
+		<p:commandButton value="Salvar" action="#{msg.salvar}" update="msg" styleClass="p-mr-2" icon="pi pi-check" style="margin: 10px">
+			<p:confirm type="popup" header="Confirmação" message="Tem certeza que deseja salvar?" />
 		</p:commandButton>
 
-	<p:commandButton value="Delete" action="#{msg.salvar}" update="msg" styleClass="ui-button-danger" icon="pi pi-times">
-			<p:confirm type="popup" header="Confirmation" message="Tem certeza que deseja salvar?" />
+	<p:commandButton value="Delete" action="#{msg.salvar}" update="msg" styleClass="ui-button-danger" icon="pi pi-times" style="margin: 10px">
+			<p:confirm type="popup" header="Confirmação" message="Tem certeza que deseja salvar?" />
 		</p:commandButton>
 		
 		
@@ -39,7 +45,7 @@
 
 		
 		<p:confirmPopup global="true">
-            <p:commandButton value="Não" type="button" styleClass="ui-confirm-popup-no ui-button-flat"/>
+            <p:commandButton value="Não" styleClass="ui-confirm-popup-no ui-button-flat"/>
             <p:commandButton value="Sim" type="button" styleClass="ui-confirm-popup-yes" />
         </p:confirmPopup>
 	</h:form>
