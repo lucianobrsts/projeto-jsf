@@ -3,10 +3,21 @@ package br.com.medicamentos.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "medicamento")
 public class Medicamento implements Serializable, base {
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue
+	@Column(name = "codigo")
 	private Long id;
 	private String nome;
 	private String apresentacao;
