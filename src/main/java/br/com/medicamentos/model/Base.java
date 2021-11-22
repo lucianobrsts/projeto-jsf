@@ -1,6 +1,6 @@
 package br.com.medicamentos.model;
 
-public interface base {
+public interface Base {
 	
 	public Long getId();
 
