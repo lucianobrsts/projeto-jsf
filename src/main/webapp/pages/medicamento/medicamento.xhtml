@@ -1,78 +1,84 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="/WEB-INF/template/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-	<h:head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-		
-		<h:outputStylesheet name="style.css" library="css" />
-		
-		<title>Medicamento</title>
-		
-		<style>
-			
-			#separator{
-				margin-bottom: 20px;
-				margin-top: 20px;
-			}
-			
-			.pnlButtonAdicionar {
-				margin-top: 10px;
-				margin-bottom: 10px;
-			}
-			
-			body .ui-datatable .ui-datatable-data > tr > td {
-				padding: 5px !important;
-			}
-		</style>
-	</h:head>
+	<ui:define name="content">
+	<style>
+		body .ui-panelgrid .ui-panelgrid-cell {
+	   		border: 0 !important;
+		}
+	</style>
 	
-	<h:body>
-		<p:graphicImage library="images" name="logo.png" width="100px" />
-	
-		<p:messages id="msg" closable="true" showIcon="true" />
-	
-		<p:panel header="Cadastro de Pessoas" toggleable="true">
-			<h:form id="formCadastro">
-				<h:panelGrid columns="3">
-					<p:outputLabel value="Nome" />
-					<p:inputText value="#{bean.pessoa.nome}" 
-					required="true" 
-					size="50" 
-					id="nome" 
-					placeholder="Digite o nome aqui." 
-					requiredMessage="O nome � obrigat�rio!" 
-					title="Digite o nome aqui."/>
-					<p:message for="nome" />
+		<p:fieldset legend="Medicamentos">
+
+			<h:form id="form">
+				<p:panelGrid columns="2" style="border: 0;">
+				
+					<p:outputLabel value="Medicamento" />
+					<p:inputText size="30" value="#{medicamentoMB.medicamento.nome}" required="true" label="Medicamento" />
+
+					<p:outputLabel value="Apresentação" />
+					<p:inputText size="30" value="#{medicamentoMB.medicamento.apresentacao}" required="true" label="Apresentação " />
+
+					<p:outputLabel value="Apresentação" />
+					<p:selectOneMenu value="#{medicamentoMB.medicamento.laboratorio}" required="true" label="Laboratório ">
+						<f:selectItem itemLabel="Selecione o laboratório" noSelectionOption="true"/>
+						<f:selectItem itemLabel="Bayer" itemValue="BAYER" />
+						<f:selectItem itemLabel="Pratidonaduzzi" itemValue="PRATIDONADUZZI" />
+						<f:selectItem itemLabel="E-MS" itemValue="E-MS" />
+						<f:selectItem itemLabel="Legrand" itemValue="LEGRAND" />
+						<f:selectItem itemLabel="Eurofarma" itemValue="EUROFARMA" />
+						<f:selectItem itemLabel="Cimed" itemValue="CIMED" />
+						<f:selectItem itemLabel="Teuto" itemValue="TEUTO" />
+						<f:selectItem itemLabel="Neo Qímica" itemValue="NEO QUIMICA" />
+						<f:selectItem itemLabel="Actavis" itemValue="ACTAVIS" />
+						<f:selectItem itemLabel="Nova Química" itemValue="NOVA QUIMICA" />
+						<f:selectItem itemLabel="Biossintética" itemValue="BIOSSINTETICA" />
+					</p:selectOneMenu>
 					
-					<p:outputLabel value="Email" />
-					<p:inputText value="#{bean.pessoa.email}" 
-					required="true" 
-					size="50" 
-					id="email" 
-					placeholder="Digite o email aqui." 
-					requiredMessage="O email � obrigat�rio!" 
-					title="Digite oemail aqui."/>
-					<p:message for="email"/>
-				</h:panelGrid>
-	
-				<div class="pnlButtonAdicionar">
-					<p:commandButton value="Adicionar" action="#{bean.adicionar}" class="btnAdicionar" update=":formCadastro :tblPessoa :msg"/>
-				</div>
+					<p:outputLabel value="Registro MS" />
+					<p:inputMask mask="9.9999.9999.999-9" size="13" value="#{medicamentoMB.medicamento.registro}" required="true" label="Registro MS"/>
+					
+					<p:outputLabel value="Preço" />
+					<p:inputText size="4" value="#{medicamentoMB.medicamento.preco}" required="true" label="Preço">
+						<f:convertNumber minFractionDigits="2" locale="pt_BR" minIntegerDigits="0" />
+					</p:inputText>
+					
+					<p:outputLabel />
+				
+					<p:commandButton value="Cadastrar" action="#{medicamentoMB.adicionar}" update="msg" icon="fa fa-floppy-o" style="margin-top: 10px;"/>
+					
+					<p:dataTable>
+						<p:column headerText="">
+							<p:outputLabel />
+						</p:column>
+						
+						<p:column headerText="">
+							<p:outputLabel />
+						</p:column>
+						
+						<p:column headerText="">
+							<p:outputLabel />
+						</p:column>
+						
+						<p:column headerText="">
+							<p:outputLabel />
+						</p:column>
+						
+						<p:column headerText="">
+							<p:outputLabel />
+						</p:column>
+						
+						<p:column headerText="">
+							<p:outputLabel />
+						</p:column>
+					</p:dataTable>
+				</p:panelGrid>
 			</h:form>
-		</p:panel>
-		
-		<h2>Lista de Pessoas</h2>
-		
-		<p:dataTable value="#{bean.pessoas}" var="p" border="1" id="tblPessoa">
-			<p:column headerText="Nome">#{p.nome}</p:column>
-			<p:column headerText="Email">#{p.email}</p:column>
-			<p:column headerText="Editar" width="80">
-				<p:button value="Editar" outcome="/pages/sucesso.xhtml?param=#{p.nome}" />
-			</p:column>
-		</p:dataTable>
-	</h:body>
-</html>
+
+		</p:fieldset>
+	</ui:define>
+</ui:composition>
