@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		
+		<h:outputStylesheet name="style.css" library="css" />
+		
+		<title>Medicamento</title>
+		
+		<style>
+			
+			#separator{
+				margin-bottom: 20px;
+				margin-top: 20px;
+			}
+			
+			.pnlButtonAdicionar {
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+			
+			body .ui-datatable .ui-datatable-data > tr > td {
+				padding: 5px !important;
+			}
+		</style>
+	</h:head>
+	
+	<h:body>
+		<p:graphicImage library="images" name="logo.png" width="100px" />
+	
+		<p:messages id="msg" closable="true" showIcon="true" />
+	
+		<p:panel header="Cadastro de Pessoas" toggleable="true">
+			<h:form id="formCadastro">
+				<h:panelGrid columns="3">
+					<p:outputLabel value="Nome" />
+					<p:inputText value="#{bean.pessoa.nome}" 
+					required="true" 
+					size="50" 
+					id="nome" 
+					placeholder="Digite o nome aqui." 
+					requiredMessage="O nome é obrigatório!" 
+					title="Digite o nome aqui."/>
+					<p:message for="nome" />
+					
+					<p:outputLabel value="Email" />
+					<p:inputText value="#{bean.pessoa.email}" 
+					required="true" 
+					size="50" 
+					id="email" 
+					placeholder="Digite o email aqui." 
+					requiredMessage="O email é obrigatório!" 
+					title="Digite oemail aqui."/>
+					<p:message for="email"/>
+				</h:panelGrid>
+	
+				<div class="pnlButtonAdicionar">
+					<p:commandButton value="Adicionar" action="#{bean.adicionar}" class="btnAdicionar" update=":formCadastro :tblPessoa :msg"/>
+				</div>
+			</h:form>
+		</p:panel>
+		
+		<h2>Lista de Pessoas</h2>
+		
+		<p:dataTable value="#{bean.pessoas}" var="p" border="1" id="tblPessoa">
+			<p:column headerText="Nome">#{p.nome}</p:column>
+			<p:column headerText="Email">#{p.email}</p:column>
+			<p:column headerText="Editar" width="80">
+				<p:button value="Editar" outcome="/pages/sucesso.xhtml?param=#{p.nome}" />
+			</p:column>
+		</p:dataTable>
+	</h:body>
+</html>
